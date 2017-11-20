@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Lines</title>
+		
+		<style> 
+			body{
+				background-color: white;
+			}
+			.cell{
+				float: left;
+				margin: 2px;
+				height: 64px;
+				width: 64px;
+				background-color: blue;
+			}
+			.line:after{
+				content:"";
+				display: block;
+				clear: both;
+			}
+			.add{
+				margin: 2px;
+				text-align: center;
+				font-size: 50px;
+				font-weight:bold;
+				color:white;
+				height: 64px;
+				width: 64px;
+				background-color: #ffd400;	
+				outline: none;
+				border: none;
+				display: block;
+				transition: background-color 0.5s;
+			}
+			.col{
+				position: absolute;
+				top: 0;
+				left: 356px;
+				top: 71px;
+			}
+			.lain{
+				margin-left: 70px;
+			}
+			
+			.add:hover{
+				transition: background-color 0.5s;
+				background-color: #ffe256;
+			}
+			
+			.del{
+				position: absolute;
+				opacity: 0;
+				
+				font-size: 50px;
+				font-weight:bold;
+				color:white;
+				height: 64px;
+				width: 64px;
+				background-color: red;	
+				outline: none;
+				border: none;
+				transition: background-color .25s;
+				
+			}
+			
+			.del:hover{
+				visibility: visible; 
+				opacity: 1;
+				transition: background-color 0.5s;
+				background-color: #ff7c7c;
+			}
+			
+			#delLine{ 
+				top: 0px;
+				left: 80px;
+			}
+			
+			.table {
+			border: 1px solid blue;
+			width: 272px;
+			margin: 68px 68px 2px 68px;
+			padding: 2px;
+			}
+			.table:hover ~ .del{
+			opacity: 1;
+			visibility: visible;				
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="table">
+			<div class="line">
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+			</div>
+			<div class="line">
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+			</div>
+			<div class="line">
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+			</div>
+			<div class="line">
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+			</div>
+		</div>
+		<button class="del" id="delLine" >-</button>
+		<button class="del" id="delCol" style="top: 73px;">-</button>
+
+		<button class="add lain">+</button>
+		<button class="add col">+</button>
+		<script src="Script.js"></script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
