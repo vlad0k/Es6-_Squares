@@ -29,7 +29,7 @@ for( let i = 0; i < del.length; i++){
 		let lines = document.getElementsByClassName("line");
 		if (lines.length !== 1) {
 			for(let i = 0; i < lines.length; i++){
-				if(lines[i].getBoundingClientRect().top === del[1].getBoundingClientRect().top){
+				if((lines[i].getBoundingClientRect().top + 2) === del[1].getBoundingClientRect().top){
 					lines[i].remove();
 				}
 			}
@@ -81,7 +81,7 @@ table.onmouseover = () => {
 	}
 	lines.forEach( (item, i, arr) => {
 		item.onmouseover = (event) =>	{
-			del[1].style.top = event.currentTarget.getBoundingClientRect().top + pageYOffset + "px";
+			del[1].style.top = event.currentTarget.getBoundingClientRect().top + 2 + pageYOffset + "px";
 		}
 	
 	});
