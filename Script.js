@@ -25,17 +25,19 @@ let del = [...document.getElementsByClassName("del")];
 
 
 for( let i = 0; i < del.length; i++){
-	del[i].onclick = (event) => {
+	del[1].onclick = (event) => {
 		let lines = document.getElementsByClassName("line");
-		var cells = document.getElementsByClassName("cell");
-		if (del.indexOf(event.currentTarget) === 1 && lines.length !== 1) {
+		if (lines.length !== 1) {
 			for(let i = 0; i < lines.length; i++){
 				if(lines[i].getBoundingClientRect().top === del[1].getBoundingClientRect().top){
 					lines[i].remove();
 				}
 			}
-			return;
 		}
+	}
+	del[0].onclick = () => {
+		let lines = document.getElementsByClassName("line");
+		let cells = document.getElementsByClassName("cell");
 		if (cells.length !== lines.length){
 			for(let i = 0; i < cells.length; i++){
 				
@@ -47,7 +49,22 @@ for( let i = 0; i < del.length; i++){
 			document.body.getElementsByTagName("div")[0].style.width = tableWidth + "px";
 			addButLeft -= 68;
 			add[1].style.left = addButLeft + "px";
-	}
+			del[0].style.opacity = 0;
+		}
+	};
+	del[i].onmouseover = () => {
+		let lines = document.getElementsByClassName("line");
+		let cells = document.getElementsByClassName("cell");
+		if (lines.length > 1){
+			del[1].style.opacity = 1;
+		}
+		if (cells.length !== lines.length){
+			del[0].style.opacity = 1;
+		}
+
+	};
+	del[i].onmouseout = (event) => {
+		event.currentTarget.style.opacity = 0;
 	};
 }
 
@@ -56,6 +73,12 @@ let table = document.getElementsByTagName("div")[0];
 table.onmouseover = () => {
 	let lines = [...document.getElementsByClassName("line")];
 	let cells = [...document.getElementsByClassName("cell")];
+	if (lines.length > 1){
+		del[1].style.opacity = 1;
+	}
+	if (cells.length !== lines.length){
+		del[0].style.opacity = 1;
+	}
 	lines.forEach( (item, i, arr) => {
 		item.onmouseover = (event) =>	{
 			del[1].style.top = event.currentTarget.getBoundingClientRect().top + pageYOffset + "px";
@@ -67,13 +90,13 @@ table.onmouseover = () => {
 			del[0].style.left = event.currentTarget.getBoundingClientRect().left + pageXOffset + "px";
 		}
 	});
-	cells.forEach( (item, i ,arr) => {
-		item.onclick =  (event) =>{
-				event.currentTarget.style.backgroundColor = "white";
-		}
-	});  
 }
-
+table.onmouseout = () => {
+	
+	del.forEach( (item, i , arr) => {
+		item.style.opacity = 0;
+	});
+}
 
 
 
